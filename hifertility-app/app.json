@@ -1,0 +1,42 @@
+{
+  "expo": {
+    "name": "Hifertility",
+    "slug": "hifertility-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#802277"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.hifertility.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#802277",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false,
+      "package": "com.hifertility.app"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-av",
+      "expo-asset",
+      "expo-font"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "hifertility-dev"
+      }
+    }
+  }
+}
