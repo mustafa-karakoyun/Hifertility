@@ -4,27 +4,31 @@ Hifertility, doğurganlık sağlığınızı desteklemek ve sağlıklı bir yaş
 
 ## 🎨 Tasarım Özellikleri
 
-- **Ana Renk**: Deep Purple (#802277) - İkonlar, butonlar ve başlıklar için
-- **Arka Plan**: Temiz beyaz veya çok açık gri
-- **Tipografi**: Modern, sans-serif fontlar (Roboto)
+- **Ana Renk**: Turkuaz Mavi (#2badee) - İkonlar, butonlar ve vurgular için
+- **Arka Plan**: Temiz beyaz (#FDFCFE) ve açık gri tonları
+- **Tipografi**: Modern, sans-serif fontlar (Inter & Playfair Display)
 - **Navigasyon**: Drawer Navigation (Yan Menü) kullanıcı profili ile
+- **UI/UX**: Modern, minimalist ve kullanıcı dostu arayüz
+- **Kartlar**: Yuvarlatılmış köşeler (16px border-radius)
+- **İkonlar**: Ionicons seti
 
 ## 📱 Özellikler
 
 ### Ekranlar
 
-1. **Bildirimler** - Hatırlatıcılar ve sistem mesajları
-2. **Ev Ödevi** - Günlük ve haftalık görevler
-3. **Danışmanlık** - Uzman danışmanlarla iletişim
-4. **Yol Haritası** - İlerleme takibi
-5. **Kurslar** - Video dersler ve eğitim içerikleri
-6. **Blog** - Bilgi makaleleri ve içerik
-7. **Anket** - Sağlık değerlendirmeleri
-8. **Forum** - Topluluk tartışma alanı
-9. **İletişim** - Destek ve iletişim bilgileri
-10. **Hakkında** - Uygulama hakkında bilgiler
-11. **Onay & Rıza** - KVKK ve gizlilik bilgileri
-12. **Hızlı İpuçları** - Günlük sağlık önerileri
+1. **Anasayfa (Home)** - Kişiselleştirilmiş dashboard, günlük görevler ve hızlı erişim
+2. **Bildirimler** - Hatırlatıcılar, ipuçları ve sistem mesajları
+3. **Ev Ödevi** - Günlük ve haftalık görevler
+4. **Danışmanlık** - Uzman danışmanlarla iletişim
+5. **Yol Haritası** - İlerleme takibi ve hedefler
+6. **Kurslar** - Video dersler ve eğitim içerikleri (genişletilebilir ders listesi)
+7. **Blog** - Bilgi makaleleri ve sağlık içerikleri
+8. **Anket** - Sağlık değerlendirmeleri
+9. **Forum** - Topluluk tartışma alanı ve yeni konu oluşturma
+10. **İletişim** - Destek ve iletişim bilgileri
+11. **Hakkında** - Uygulama hakkında bilgiler
+12. **Onay & Rıza** - KVKK ve gizlilik bilgileri
+13. **Hızlı İpuçları** - Günlük sağlık önerileri
 
 ## 🛠️ Teknoloji Stack
 
@@ -79,16 +83,17 @@ hifertility-app/
 │   ├── navigation/          # Navigasyon yapılandırması
 │   │   └── RootNavigator.tsx
 │   ├── screens/            # Uygulama ekranları
-│   │   ├── NotificationsScreen.tsx
+│   │   ├── HomeScreen.tsx           # Anasayfa (Dashboard)
+│   │   ├── NotificationsScreen.tsx  # Bildirimler (filtreleme ile)
 │   │   ├── HomeworkScreen.tsx
 │   │   ├── CounselingScreen.tsx
 │   │   ├── RoadmapScreen.tsx
-│   │   ├── CoursesScreen.tsx
+│   │   ├── CoursesScreen.tsx        # Genişletilebilir kurs listesi
 │   │   ├── CourseDetailScreen.tsx
 │   │   ├── BlogScreen.tsx
-│   │   ├── BlogDetailScreen.tsx
+│   │   ├── BlogDetailScreen.tsx     # Modern blog detay tasarımı
 │   │   ├── ForumScreen.tsx
-│   │   ├── NewTopicScreen.tsx
+│   │   ├── NewTopicScreen.tsx       # Modern forum yazı oluşturma
 │   │   ├── SurveyScreen.tsx
 │   │   ├── ContactScreen.tsx
 │   │   ├── AboutScreen.tsx
@@ -120,7 +125,7 @@ npm install -g eas-cli
 eas login
 ```
 
-### Proje Yapılandırması
+### Proje Yapılandırması (İlk kez)
 
 ```bash
 eas build:configure
@@ -130,24 +135,44 @@ eas build:configure
 
 **Preview (Test) APK:**
 ```bash
-eas build -p android --profile preview
+eas build --platform android --profile preview
+```
+
+**Development APK (Hata ayıklama modlu):**
+```bash
+eas build --platform android --profile development
 ```
 
 **Production APK:**
 ```bash
-eas build -p android --profile production
+eas build --platform android --profile production
+```
+
+**Yerel Build (Daha hızlı):**
+```bash
+eas build --platform android --type apk --local
+```
+
+### Build Durumunu Kontrol Etme
+
+```bash
+eas build:list
 ```
 
 Build tamamlandığında, EAS size indirme linki sağlayacaktır.
 
 ## 🎯 Kullanıcı Akışı
 
-1. Kullanıcı uygulamayı açar
-2. Drawer menüden istediği bölüme gider
-3. Profil bilgileri drawer menünün en üstünde görüntülenir
-4. Her ekranda purple (#802277) tema rengi kullanılır
-5. İkonlar Ionicons kütüphanesinden sağlanır
-6. Drawer navigasyon ile tüm bölümlere erişim sağlanır
+1. Kullanıcı uygulamayı açar ve modern **Anasayfa (Dashboard)** ile karşılanır
+2. Anasayfada kişiselleştirilmiş içerik, günlük görevler ve ilerleme gösterilir
+3. Drawer menüden istediği bölüme kolayca gider
+4. Profil bilgileri drawer menünün en üstünde görüntülenir
+5. Her ekranda turkuaz mavi (#2badee) tema rengi ile modern, minimal tasarım kullanılır
+6. İkonlar Ionicons kütüphanesinden sağlanır
+7. Bildirimler kategorilere ayrılmış ve filtrelenebilir (Tümü, Hatırlatıcılar, İpuçları)
+8. Kurslar genişletilebilir kart yapısıyla ders listelerini gösterir
+9. Blog yazıları modern, görselle desteklenmiş detay sayfalarında açılır
+10. Forum'da yeni konu oluşturma modern form tasarımı ile yapılır
 
 ## 🔧 Yapılandırma
 
@@ -155,13 +180,20 @@ Build tamamlandığında, EAS size indirme linki sağlayacaktır.
 
 ```typescript
 export const colors = {
-  primary: '#802277',       // Ana renk
-  background: '#FFFFFF',    // Arka plan
-  backgroundLight: '#F5F5F5', // Açık arka plan
-  text: '#333333',          // Ana metin
-  textSecondary: '#666666', // İkincil metin
-  border: '#E0E0E0',       // Kenarlıklar
-  // ...
+  primary: '#2badee',           // Ana renk (Turkuaz Mavi)
+  background: '#FFFFFF',        // Arka plan
+  backgroundLight: '#FDFCFE',   // Açık arka plan
+  text: '#333333',              // Ana metin
+  textSecondary: '#666666',     // İkincil metin
+  textLight: '#9CA3AF',         // Açık metin
+  border: '#E0E0E0',           // Kenarlıklar
+  white: '#FFFFFF',
+  error: '#D32F2F',
+  success: '#388E3C',
+  icon: '#2badee',
+  surface: '#FFFFFF',
+  backgroundDark: '#121212',    // Koyu mod arka plan
+  surfaceDark: '#1E1E1E',       // Koyu mod yüzey
 };
 ```
 
@@ -174,25 +206,41 @@ Tüm ekranlar ve parametreleri TypeScript ile tip güvenli şekilde tanımlanmı
 ### Yeni Ekran Ekleme
 
 1. `src/screens/` klasörüne yeni ekran dosyası oluşturun
-2. `src/types/navigation.ts` dosyasına ekran tipini ekleyin
+2. `src/types/navigation.ts` dosyasına ekran tipini ekleyin (DrawerParamList veya RootStackParamList)
 3. `src/navigation/RootNavigator.tsx` dosyasına ekranı kaydedin
 4. Drawer menüye dahil etmek için Drawer.Screen ekleyin
 
 ### Tema Değiştirme
 
-`src/theme/colors.ts` dosyasındaki renk değerlerini güncelleyin.
+`src/theme/colors.ts` dosyasındaki renk değerlerini güncelleyin. Ana rengi değiştirmek için `primary` değerini düzenleyin.
+
+### Tasarım Standartları
+
+- **Border Radius**: 16px (kartlar), 12px (küçük elementler), 20px (butonlar)
+- **Padding**: 16px (standart), 12px (orta), 8px (küçük)
+- **Gap**: Flexbox/Grid yapılarda 8px, 12px, 16px
+- **Font Sizes**: 28px (başlıklar), 18px (alt başlık), 14px (normal), 12px (küçük)
+- **Colors**: Ana renk #2badee, ikincil renkler pastel tonlarda
 
 ## 📄 Lisans
 
 Bu proje özel bir projedir. Tüm hakları saklıdır.
 
-## 👥 Destek
 
-Herhangi bir sorun veya öneriniz için:
-- Email: info@hifertility.com
-- Telefon: +90 555 123 45 67
 
 ## 🔄 Güncellemeler
+
+### v2.0.0 (Tasarım Güncellemesi)
+- ✨ Yeni modern tasarım dili
+- 🎨 Ana renk Purple'dan Turkuaz Maviye (#2badee) güncellendi
+- 🏠 Yeni Anasayfa (Dashboard) eklendi
+- 📱 Tüm ekranlar modern tasarım prensiplerine göre yeniden tasarlandı
+- 🔔 Bildirimler sayfası kategori filtreleme ile geliştirildi
+- 📚 Kurslar sayfası genişletilebilir ders listesi ile iyileştirildi
+- 📝 Blog detay sayfası modern görselli tasarım ile güncellendi
+- ✍️ Forum yazı oluşturma modern form tasarımı ile yenilendi
+- 🎨 Tüm ekranlarda tutarlı border-radius (16px) ve spacing
+- 🖼️ Görselle desteklenmiş kart tasarımları
 
 ### v1.0.0 (İlk Sürüm)
 - Temel navigasyon yapısı
