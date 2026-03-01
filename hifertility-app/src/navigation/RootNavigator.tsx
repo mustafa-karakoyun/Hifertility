@@ -6,6 +6,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { colors } from '../theme/colors';
 
 // Screens
+import HomeScreen from '../screens/HomeScreen';
 import NotificationsScreen from '../screens/NotificationsScreen';
 import HomeworkScreen from '../screens/HomeworkScreen';
 import CounselingScreen from '../screens/CounselingScreen';
@@ -51,6 +52,16 @@ const DrawerNavigator = () => {
         },
       }}
     >
+      <Drawer.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          title: 'Anasayfa',
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="home" size={size} color={color} />
+          ),
+        }}
+      />
       <Drawer.Screen
         name="Notifications"
         component={NotificationsScreen}

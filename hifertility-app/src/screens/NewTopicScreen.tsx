@@ -13,7 +13,7 @@ import { colors } from '../theme/colors';
 import { useNavigation } from '@react-navigation/native';
 
 export default function NewTopicScreen() {
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
   const [title, setTitle] = useState('');
   const [message, setMessage] = useState('');
 
@@ -29,22 +29,54 @@ export default function NewTopicScreen() {
 
   return (
     <View style={styles.container}>
-      <ScrollView contentContainerStyle={styles.scrollContent}>
-        <View style={styles.inputContainer}>
-          <Text style={styles.label}>Başlık</Text>
+      {/* Header */}
+      <View style={styles.header}>
+        <View style={styles.headerLeft}>
+          <TouchableOpacity
+            onPress={() => navigation.goBack()}
+            style={styles.backButton}
+          >
+            <Ionicons name="arrow-back" size={24} color={colors.primary} />
+          </TouchableOpacity>
+          <Text style={styles.headerTitle}>Yeni Konu</Text>
+        </View>
+        <TouchableOpacity
+          style={styles.sendButton}
+          onPress={handleSubmit}
+        >
+          <Text style={styles.sendButtonText}>Gönder</Text>
+          <Ionicons name="send" size={16} color="white" />
+        </TouchableOpacity>
+      </View>
+
+      <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollContent}>
+        {/* Recipient Selection */}
+        <View style={styles.recipientSection}>
+          <View>
+            <Text style={styles.recipientLabel}>KİME</Text>
+            <View style={styles.recipientValue}>
+              <View style={styles.recipientDot} />
+              <Text style={styles.recipientName}>Forum Yönetimi</Text>
+            </View>
+          </View>
+          <TouchableOpacity>
+            <Text style={styles.changeButton}>Değiştir</Text>
+          </TouchableOpacity>
+        </View>
+
+        {/* Inputs */}
+        <View style={styles.inputsContainer}>
           <TextInput
             style={styles.titleInput}
-            placeholder="Konu başlığını yazın..."
+            placeholder="Gönderinizin başlığını yazın"
+            placeholderTextColor={colors.textSecondary}
             value={title}
             onChangeText={setTitle}
           />
-        </View>
-
-        <View style={styles.inputContainer}>
-          <Text style={styles.label}>Mesaj</Text>
           <TextInput
             style={styles.messageInput}
-            placeholder="Mesajınızı yazın..."
+            placeholder="Mesajınızı buraya yazınız..."
+            placeholderTextColor={colors.textSecondary}
             value={message}
             onChangeText={setMessage}
             multiline
@@ -52,21 +84,22 @@ export default function NewTopicScreen() {
           />
         </View>
 
-        <TouchableOpacity style={styles.addImageButton}>
-          <Ionicons name="image-outline" size={24} color={colors.primary} />
-          <Text style={styles.addImageText}>+ Resim Ekle</Text>
-        </TouchableOpacity>
+        {/* Info Box */}
+        <View style={styles.infoBox}>
+          <Ionicons name="information-circle" size={20} color={colors.primary} />
+          <Text style={styles.infoText}>
+            Lütfen topluluk kurallarımıza uygun nazik bir dil kullanın.
+          </Text>
+        </View>
+
+        <View style={{ height: 80 }} />
       </ScrollView>
 
-      <View style={styles.bottomBar}>
-        <TouchableOpacity
-          style={styles.submitButton}
-          onPress={handleSubmit}
-        >
-          <Ionicons name="send" size={20} color={colors.white} />
-          <Text style={styles.submitText}>Gönder</Text>
-        </TouchableOpacity>
-      </View>
+      {/* Add Image Button */}
+      <TouchableOpacity style={styles.addImageButton}>
+        <Ionicons name="image" size={24} color={colors.primary} />
+        <Text style={styles.addImageButtonText}>RESİM</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -74,72 +107,155 @@ export default function NewTopicScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.backgroundLight,
+    backgroundColor: colors.background,
   },
-  scrollContent: {
-    padding: 16,
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: '#E5E7EB',
   },
-  inputContainer: {
-    marginBottom: 20,
+  headerLeft: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
   },
-  label: {
-    fontSize: 16,
+  backButton: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  headerTitle: {
+    fontSize: 18,
     fontWeight: 'bold',
     color: colors.text,
-    marginBottom: 8,
+  },
+  sendButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    backgroundColor: colors.primary,
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    borderRadius: 20,
+  },
+  sendButtonText: {
+    fontSize: 13,
+    fontWeight: '600',
+    color: 'white',
+  },
+  scrollContent: {
+    flex: 1,
+  },
+  recipientSection: {
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    borderBottomWidth: 1,
+    borderBottomColor: '#E5E7EB',
+  },
+  recipientLabel: {
+    fontSize: 11,
+    fontWeight: '600',
+    color: colors.textSecondary,
+    letterSpacing: 0.5,
+    marginBottom: 4,
+  },
+  recipientValue: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+  },
+  recipientDot: {
+    width: 6,
+    height: 6,
+    borderRadius: 3,
+    backgroundColor: colors.primary,
+  },
+  recipientName: {
+    fontSize: 13,
+    fontWeight: '600',
+    color: colors.text,
+  },
+  changeButton: {
+    fontSize: 13,
+    fontWeight: '600',
+    color: colors.primary,
+  },
+  inputsContainer: {
+    paddingHorizontal: 16,
+    paddingVertical: 16,
+    gap: 12,
   },
   titleInput: {
-    backgroundColor: colors.white,
+    backgroundColor: colors.surface,
     borderWidth: 1,
-    borderColor: colors.border,
-    borderRadius: 8,
-    padding: 12,
+    borderColor: '#E5E7EB',
+    borderRadius: 16,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
     fontSize: 16,
+    fontWeight: '600',
+    color: colors.text,
   },
   messageInput: {
-    backgroundColor: colors.white,
+    backgroundColor: colors.surface,
     borderWidth: 1,
-    borderColor: colors.border,
-    borderRadius: 8,
-    padding: 12,
-    fontSize: 16,
-    minHeight: 200,
+    borderColor: '#E5E7EB',
+    borderRadius: 16,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    fontSize: 14,
+    color: colors.text,
+    minHeight: 160,
+  },
+  infoBox: {
+    marginHorizontal: 16,
+    marginVertical: 12,
+    flexDirection: 'row',
+    gap: 12,
+    backgroundColor: '#F0F8FF',
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: '#BFDBFE',
+  },
+  infoText: {
+    flex: 1,
+    fontSize: 13,
+    color: colors.textSecondary,
+    lineHeight: 18,
   },
   addImageButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    position: 'absolute',
+    bottom: 96,
+    right: 24,
+    width: 64,
+    height: 64,
+    borderRadius: 32,
+    backgroundColor: colors.surface,
+    borderWidth: 4,
+    borderColor: '#E5E7EB',
     justifyContent: 'center',
-    backgroundColor: colors.white,
-    borderWidth: 2,
-    borderColor: colors.primary,
-    borderStyle: 'dashed',
-    borderRadius: 8,
-    padding: 20,
-  },
-  addImageText: {
-    fontSize: 16,
-    color: colors.primary,
-    marginLeft: 8,
-    fontWeight: '500',
-  },
-  bottomBar: {
-    padding: 16,
-    backgroundColor: colors.white,
-    borderTopWidth: 1,
-    borderTopColor: colors.border,
-  },
-  submitButton: {
-    flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: colors.primary,
-    padding: 16,
-    borderRadius: 8,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 5,
   },
-  submitText: {
-    color: colors.white,
-    fontSize: 16,
+  addImageButtonText: {
+    fontSize: 10,
     fontWeight: 'bold',
-    marginLeft: 8,
+    color: colors.primary,
+    marginTop: 2,
   },
 });

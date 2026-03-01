@@ -1,14 +1,18 @@
 export const colors = {
-  primary: '#802277',
+  primary: '#2badee',
   background: '#FFFFFF',
-  backgroundLight: '#F5F5F5',
+  backgroundLight: '#FDFCFE',
   text: '#333333',
   textSecondary: '#666666',
+  textLight: '#9CA3AF',
   border: '#E0E0E0',
   white: '#FFFFFF',
   error: '#D32F2F',
   success: '#388E3C',
-  icon: '#802277',
+  icon: '#2badee',
+  surface: '#FFFFFF',
+  backgroundDark: '#121212',
+  surfaceDark: '#1E1E1E',
 };
 
 export const theme = {

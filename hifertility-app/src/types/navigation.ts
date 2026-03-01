@@ -18,6 +18,7 @@ export type RootStackParamList = {
 };
 
 export type DrawerParamList = {
+  Home: undefined;
   Notifications: undefined;
   Homework: undefined;
   Counseling: undefined;
