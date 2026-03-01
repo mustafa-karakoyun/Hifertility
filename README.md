@@ -4,6 +4,9 @@ Hifertility, doğurganlık sağlığınızı desteklemek ve sağlıklı bir yaş
 
 # UYGULAMANIN APK DOSYASI YAN TARAFTA BULUNAN REALESES BÖLÜMÜNDEDİR.
 
+# DEMO VİDEO
+https://youtube.com/shorts/Q_yQK2xmqdo?si=BTHicwwGSiUTNbLP
+
 ## 📦 Kurulum
 
 ### Gereksinimler
