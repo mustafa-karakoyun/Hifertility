@@ -23,7 +23,11 @@
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
       "predictiveBackGestureEnabled": false,
-      "package": "com.hifertility.app"
+      "package": "com.hifertility.app",
+      "permissions": [
+        "android.permission.RECORD_AUDIO",
+        "android.permission.MODIFY_AUDIO_SETTINGS"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -35,7 +39,7 @@
     ],
     "extra": {
       "eas": {
-        "projectId": "hifertility-dev"
+        "projectId": "98f530dc-e4bb-48ed-8dc3-6ca934b4cb32"
       }
     }
   }
