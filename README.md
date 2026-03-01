@@ -2,7 +2,10 @@
 
 Hifertility, doğurganlık sağlığınızı desteklemek ve sağlıklı bir yaşam tarzı benimsemenize yardımcı olmak için tasarlanmış kapsamlı bir React Native mobil uygulamasıdır.
 
-# UYGULAMANIN APK DOSYASI YAN TARAFTA BULUNAN REALESES BÖLÜMÜNDEDİR.
+# UYGULAMANIN APK DOSYASI YAN TARAFTA BULUNAN RELEASES BÖLÜMÜNDEDİR.
+
+# APK İndirme Link
+https://expo.dev/accounts/mustafa1299/projects/hifertility-app/builds/e917df1f-34ee-4331-88e3-86ceee8f0cfe
 
 # DEMO VİDEO
 https://youtube.com/shorts/Q_yQK2xmqdo?si=BTHicwwGSiUTNbLP
